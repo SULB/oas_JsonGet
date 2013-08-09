@@ -66,7 +66,7 @@ Call [index.php](./index.php) without parameters for an info or with following p
 
 For visits of the last seven days on document ````oai:scidok.sulb.uni-saarland.de:1199```` call:
 
- ````index.php?id=oai:scidok.sulb.uni-saarland.de:1199&u=day&n=7````
+  ```` index.php?id=oai:scidok.sulb.uni-saarland.de:1199&u=day&n=7 ````
 
 
 ## License
