@@ -10,10 +10,12 @@
  *  2013-07-18 jb	Added grouping by months:  hit counts will be summed
  *					and grouped by months if the unit is month or year;
  *                  days and weeks are left untouched.
+ *  2013-09-16 cl   Month interval calculation modified.
  *
  *  ---------------------------------------------------------------------
  *
  * @author James Barrante <jb@fcgh.net> for SULB Saarbruecken
+ * @author Cornelius Leidinger <s9coleid@stud.uni-saarland.de> SULB
  * @package sulb-stat
  * @subpackage main
  * @version 0.90  barrantj 2013-04-17
@@ -250,7 +252,7 @@ class oasUsageStat {
 							DATE_FORMAT(`date`, '%Y-%m') `date`
 					"; # Additional fields
 					$dg = "GROUP BY date_format(`date`, '%Y-%m')"; # GROUP BY 
-					$dw = sprintf('AND `date` >= (CURDATE() - INTERVAL %d MONTH)', $this->statNum);
+					$dw = sprintf('AND `date` >= STR_TO_DATE(CONCAT(\'01,\', MONTH(CURDATE() - INTERVAL %d MONTH), \',\', YEAR(CURDATE() - INTERVAL %d MONTH))', $this->statNum, $this->statNum) . ",'%d,%m,%Y')";
 			};
 		} else {
 			# no additional WHERE clause
